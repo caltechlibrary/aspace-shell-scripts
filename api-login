@@ -9,7 +9,7 @@ fi
 echo "Accessing ArchivesSpace via $ASPACE_API_URL"
 
 # Login
-export TOKEN=$(curl -Fpassword=$ASPACE_PASSWORD $ASPACE_API_URL/users/$ASPACE_USERNAME/login | jq -r '.session')
-echo 'export TOKEN='$TOKEN
-echo 'curl -H "X-ArchivesSpace-Session: $TOKEN" '$ASPACE_API_URL
+export ASPACE_API_TOKEN=$(curl -Fpassword=$ASPACE_PASSWORD $ASPACE_API_URL/users/$ASPACE_USERNAME/login | jq -r '.session')
+echo 'export ASPACE_API_TOKEN='$ASPACE_API_TOKEN
+echo 'curl -H "X-ArchivesSpace-Session: $ASPACE_API_TOKEN" '$ASPACE_API_URL
 echo ""
