@@ -15,16 +15,18 @@ fi
 echo "Accessing ArchivesSpace via $ASPACE_API_URL"
 
 # Login
-ASPACE_API_TOKEN=$(curl -Fpassword=$ASPACE_PASSWORD $ASPACE_API_URL/users/$ASPACE_USERNAME/login | jq -r '.session')
-if [ "$ASPACE_API_TOKEN" = "" ]; then
+REPSONSE=$(curl -Fpassword=$ASPACE_PASSWORD $ASPACE_API_URL/users/$ASPACE_USERNAME/login)
+ASPACE_API_TOKEN=$(echo $RESPONSE | jq -r '.session')
+if [ "$ASPACE_API_TOKEN" = "" ] && [ "$SPACE_API_TOKEN" != "null" ]; then
+    echo "Bad response "$RESPONSE
     echo "Login failed."
-    exit 1
+else
+    echo 'Running the following export command--'
+    echo ''
+    echo 'export ASPACE_API_TOKEN='$ASPACE_API_TOKEN
+    echo ''
+    echo 'Example curl command usage'
+    echo '   curl -H "X-ArchivesSpace-Session: $ASPACE_API_TOKEN" '$ASPACE_API_URL
+    echo ""
+    export ASPACE_API_TOKEN
 fi
-echo 'Running the following export command--'
-echo ''
-echo 'export ASPACE_API_TOKEN='$ASPACE_API_TOKEN
-echo ''
-echo 'Example curl command usage'
-echo '   curl -H "X-ArchivesSpace-Session: $ASPACE_API_TOKEN" '$ASPACE_API_URL
-echo ""
-export ASPACE_API_TOKEN
