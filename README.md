@@ -26,6 +26,5 @@ Basic usage is to source the _api-login.sh_ script first to populate the ASPACE_
 
 + bash
 + curl
-+ jq (install global with node/npm if not available)
-    + node 5.4.x or better
++ [jq](https://stedolan.github.io/jq/) the command-line JSON parser (not to be confused with node package called jq)
 
