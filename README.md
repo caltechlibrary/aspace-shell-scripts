@@ -21,3 +21,10 @@ Basic usage is to source the _api-login.sh_ script first to populate the ASPACE_
     bash export.sh  # this will export all the data based on the previous login
     . api-logout.sh # Clear the two environment variables used by this get-*.sh scripts
 ```
+
+## Requirements
+
++ Bash
++ curl
++ jq (install global with node/npm if not available)
+
