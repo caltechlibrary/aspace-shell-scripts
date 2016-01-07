@@ -24,7 +24,8 @@ Basic usage is to source the _api-login.sh_ script first to populate the ASPACE_
 
 ## Requirements
 
-+ Bash
++ bash
 + curl
 + jq (install global with node/npm if not available)
+    + node 5.4.x or better
 
